@@ -1,0 +1,13 @@
+//
+//  dayView.h
+//  FaFaWeatherStation
+//
+//  Created by 翯 on 2017-06-26.
+//  Copyright © 2017 翯. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface dayView : UIView
+-(void)setModel:(NSDictionary *)model;
+@end
