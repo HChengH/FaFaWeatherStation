@@ -22,14 +22,14 @@
     if(self = [super init]){
         self.rawWeatherURL = @"http://wthrcdn.etouch.cn/weather_mini";
         self.location = [NSDictionary dictionaryWithObjectsAndKeys:l, @"city", nil];
-        self.manager = [AFHTTPSessionManager manager];
+        self.manager = [[AFHTTPSessionManager alloc]init];
         self.manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"text/html",@"image/jpeg",@"text/plain", nil];
     }
     return self;
 }
 
 -(void)requestWeather{
-    [self.manager GET:self.rawWeatherURL parameters:self.location progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    NSURLSessionTask *task = [self.manager GET:self.rawWeatherURL parameters:self.location progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *data = [responseObject valueForKey:@"data"];
         
         weatherMainTableViewModel *model = [[weatherMainTableViewModel alloc]init];
@@ -39,9 +39,13 @@
         model.nowData = [data valueForKey:@"forecast"][0];
         model.allDays = [data valueForKey:@"forecast"];
         [self.mydelegate updateFields:model];
-        
+
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+        if([[error localizedDescription]  isEqualToString: @"cancelled"]){
+            return;
+        }
         sleep(2);   //re-connect
         self.result = nil;
         NSLog(@"错误");

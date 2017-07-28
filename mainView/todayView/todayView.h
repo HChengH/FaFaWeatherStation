@@ -17,8 +17,15 @@
 -(void)requestWithNewCity:(NSString *)city;
 @end
 
+@protocol didScrollRecall <NSObject>
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView;
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView;
+@end
+
 @interface todayView : UIScrollView
-@property (nonatomic, weak) id<searchCity> myDelegate;
+@property (nonatomic, weak) id<searchCity> searchDelegate;
+@property (nonatomic, weak) id<didScrollRecall> scrollDelegate;
 -(void)setModelandData:(NSDictionary *)data andTemp:(NSString *)temp andAqi:(NSString *)aqi andDate:(NSArray *)allday;
 -(id)initWithFrame:(CGRect)frame;
 //-(void) updateData:(NSDictionary *)data andTemp:(NSString *)temp andAqi:(NSString *)aqi andDate:(NSArray *)allday;

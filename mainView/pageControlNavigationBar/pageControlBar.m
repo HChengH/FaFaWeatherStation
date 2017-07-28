@@ -1,18 +1,25 @@
 //
-//  mainScreenScrollView.m
+//  pageControlBar.m
 //  FaFaWeatherStation
 //
-//  Created by 翯 on 2017-07-07.
+//  Created by 翯 on 2017-07-10.
 //  Copyright © 2017 翯. All rights reserved.
 //
 
-#import "mainScreenScrollView.h"
-@interface mainScreenScrollView()
-@property NSMutableArray *cities;
-@end
+#import "pageControlBar.h"
 
-@implementation mainScreenScrollView
+@implementation pageControlBar
 
+-(id) init{
+    if(self = [super init]){
+        
+    }
+    return self;
+}
+
+-(void)setModel{
+    
+}
 /*
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.

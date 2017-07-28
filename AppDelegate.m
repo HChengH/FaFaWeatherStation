@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "pageScrollViewController.h"
-#import "mainScreenScrollView.h"
+#import "ContainerViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +22,7 @@
     // pageScrollView *view = [[pageScrollView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
     self.window = [[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
-    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[pageScrollViewController alloc]init]];
+    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[ContainerViewController alloc]init]];
     [self.window makeKeyAndVisible];
     return YES;
 }
