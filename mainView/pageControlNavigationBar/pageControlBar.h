@@ -1,13 +1,13 @@
 //
-//  mainScreenScrollView.h
+//  pageControlBar.h
 //  FaFaWeatherStation
 //
-//  Created by 翯 on 2017-07-07.
+//  Created by 翯 on 2017-07-10.
 //  Copyright © 2017 翯. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface mainScreenScrollView : UIScrollView
+@interface pageControlBar : UIView
 
 @end

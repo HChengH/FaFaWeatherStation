@@ -11,9 +11,12 @@
 
 @protocol updateFields <NSObject>
 -(void)updateFields:(weatherMainTableViewModel *)model;
+//-(void)requestCancel;
 @end
 
 @interface weather : NSObject
+
+@property NSInteger *tag;
 @property (nonatomic, weak) id<updateFields>mydelegate;
 -(id)initWithLocation:(NSString *)l;
 -(void)requestWeather;
