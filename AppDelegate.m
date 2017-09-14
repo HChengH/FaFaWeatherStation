@@ -8,11 +8,7 @@
 
 #import "AppDelegate.h"
 #import "pageScrollViewController.h"
-<<<<<<< HEAD
-//#import "mainScreenScrollView.h"
-=======
 #import "ContainerViewController.h"
->>>>>>> mutiVCWithContainerController
 
 @interface AppDelegate ()
 
