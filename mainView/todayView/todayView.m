@@ -7,7 +7,7 @@
 //
 
 #import "todayView.h"
-@interface todayView() <UITextFieldDelegate>
+@interface todayView() <UITextFieldDelegate, UIScrollViewDelegate>
 @property NSString *windlevel;
 @property NSString *lowTem;
 @property NSString *highTem;
@@ -28,6 +28,19 @@
 
 @implementation todayView
 
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    self.searchBar.text = @"";
+    [self.scrollDelegate scrollViewDidScroll:scrollView];
+}
+
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    [self.scrollDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+}
+
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    [self.scrollDelegate scrollViewWillBeginDecelerating:scrollView];
+}
+
 -(id)initWithFrame:(CGRect)frame{
     if(self = [super initWithFrame:frame]){
         self.searchBar = [[searchBar alloc]initWithFrame:CGRectMake(self.frame.size.width/37.5f, self.frame.size.width/53.5714f, self.frame.size.width-2*(self.frame.size.width/37.5f), (self.frame.size.width/15.0f))];
@@ -46,6 +59,8 @@
         self.mainAnimate = [[FaFaAnimation alloc]initWithFrame:CGRectMake(self.frame.size.width/2, y, self.frame.size.width/2, (self.dayCell.frame.origin.y - (self.dateLabel.frame.origin.y+self.dateLabel.frame.size.height)))];
         
         UIImageView *background= [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
+        
+        self.delegate = self;
         
         background.image = [UIImage imageNamed:@"background3"];
         [self addSubview:background];
@@ -89,12 +104,14 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     NSString *searchCity = textField.text;
     [self.searchBar resignFirstResponder];
-    [self.myDelegate requestWithNewCity:searchCity];
+    [self.searchDelegate requestWithNewCity:searchCity];
+    self.searchBar.text = @"";
     return YES;
 }
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.searchBar resignFirstResponder];
+    self.searchBar.text = @"";
 }
 
 //-(void) updateData:(NSDictionary *)data andTemp:(NSString *)temp andAqi:(NSString *)aqi{

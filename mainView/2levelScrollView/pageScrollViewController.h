@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface pageScrollViewController : UIViewController
+@protocol updateCity <NSObject>
+-(void)updateCity:(NSString *)city;
+-(void)didSearchNewCity:(NSString *)newCity;
+@end
 
+@interface pageScrollViewController : UIViewController
+@property(nonatomic, weak) id<updateCity> mydelegate;
+@property NSString *cityName;
+-(id)initWithStaticLocation:(NSString *)location;
 @end

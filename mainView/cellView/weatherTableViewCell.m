@@ -101,11 +101,15 @@
         self.background.image = [UIImage imageNamed:@"overcastBackground"];
     }
     else if([self.type.text isEqualToString:@"中到大雨"] ||
-            [self.type.text isEqualToString:@"大雨"]){
+            [self.type.text isEqualToString:@"大雨"]||
+            [self.type.text isEqualToString:@"阵雨"]||
+            [self.type.text isEqualToString:@"中雨"]||
+            [self.type.text isEqualToString:@"中到大雨"]){
         self.typeImage.image = [UIImage imageNamed:@"heavyRain"];
         self.background.image = [UIImage imageNamed:@"rainBackground"];
     }
-    else if([self.type.text isEqualToString:@"小雨"]){
+    else if([self.type.text isEqualToString:@"小雨"]||
+            [self.type.text isEqualToString:@"小到中雨"]){
         self.typeImage.image = [UIImage imageNamed:@"lightRain"];
         self.background.image = [UIImage imageNamed:@"rainBackground"];
     }
